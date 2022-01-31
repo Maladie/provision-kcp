@@ -2,8 +2,6 @@
 CLUSTER_NAME=
 # Name of your docker account
 DOCKER_ROOT=
-# Email of gcloud service account with DNS manager permissions
-DNSMANAGER_SA_EMAIL=
 # Your email to generate certificate
 YOUR_EMAIL=
 
@@ -18,5 +16,3 @@ PROVISIONING_ENABLED="true"
 
 # Kyma version to install
 KYMA_VERSION=1.23.0
-# Compass version to install
-COMPASS_VERSION=master
