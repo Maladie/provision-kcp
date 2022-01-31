@@ -27,10 +27,10 @@ curl -L "https://storage.googleapis.com/kyma-development-artifacts/compass/${REL
 curl -L "https://storage.googleapis.com/kyma-development-artifacts/compass/${RELEASE}/is-installed.sh" -o "${TMP_DIR}/is-compass-installed.sh"
 
 sed -i.bak '/action: install/d' "${TMP_DIR}/compass-installer.yaml"
-cat ${TMP_DIR}/compass-installer.yaml
 COMBO_YAML=$(bash ${INSTALLATION_DIR}/scripts/concat-yamls.sh ${COMPASS_OVERRIDES} ${TMP_DIR}/compass-installer.yaml ${COMPASS_CR})
 COMBO_YAML=$(sed 's/\.domainName: .*/\.domainName: '"${DOMAIN}"'/g' <<<"$COMBO_YAML")
 COMBO_YAML=$(sed 's/\.ingress.domainName: .*/\.ingress.domainName: '"${DOMAIN}"'/g' <<<"$COMBO_YAML")
+COMBO_YAML=$(sed 's/\.isLocalEnv: .*/\.isLocalEnv: "false" /g' <<<"$COMBO_YAML")
 
 echo "
 ################################################################################
